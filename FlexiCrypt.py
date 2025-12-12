@@ -2,6 +2,8 @@ from ast import literal_eval
 from rsa import newkeys, PublicKey, PrivateKey, encrypt, decrypt
 from FileHandling import *
 from color import *
+from tkinter import Tk
+from tkinter import filedialog
 
 class FlexiCryptSystem:
     def __init__(self, input_file=None, output_file=None):
@@ -22,56 +24,33 @@ class FlexiCryptSystem:
     def reverse(self, ciphertext):
         pass
 
-class RSA(FlexiCryptSystem):
-    def __init__(self, key_size=512, input_file=None, output_file=None, private_key=None, public_key=None):
-        if input_file or output_file:
-            super().__init__(input_file=input_file, output_file=output_file)
-        if key_size:
-            self.key_size = key_size
-        if private_key:
-            self.private_key = private_key
-        if public_key:
-            self.public_key = public_key
+    def openFile(self, title="Select file"):
+            root = Tk()
+            root.withdraw()
+            root.lift()
+            root.attributes("-topmost", True)   # <-- Forces dialog to front
 
-    def generate_keys(self):
-        try:
-            public_key, private_key = newkeys(self.key_size)
-            if not public_key or not private_key:
-                raise ValueError("Cannot generate keys.")
-        except ValueError as e:
-            print(f"Error: {e}")
-        else:
-            self.public_key = public_key
-            self.private_key = private_key
-            return public_key, private_key
-        
+            filepath = filedialog.askopenfilename(
+                parent=root,
+                title=title,
+                filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")]
+            )
 
-    def process(self, public_key, message):
-        return encrypt(message.encode(), public_key)
+            root.destroy()
+            return filepath
 
-    def reverse(self, ciphertext):
-        return decrypt(ciphertext, self.private_key).decode()
+    def saveFile(self, title="Save file as"):
+        root = Tk()
+        root.withdraw()
+        root.lift()
+        root.attributes("-topmost", True)   # <-- Forces dialog to front
 
-    def save_keys(self, public_key, private_key):
-        print_save_keys_options()
-        choice = secure_input("Choose an option: ", [1,2,3])
+        filepath = filedialog.asksaveasfilename(
+            parent=root,
+            title=title,
+            defaultextension=".txt",
+            filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")]
+        )
 
-        if choice == 1:
-            file_path = print_input_normal("Enter filename or path for both keys: ").strip()
-            with open(file_path, "w") as f:
-                f.write(public_key)
-                f.write("\n")
-                f.write(private_key)
-            print_success(f"Keys saved to {file_path}")
-
-        elif choice == 2:
-            pub_file = print_input_normal("Enter filename or path for public key: ").strip()
-            priv_file = print_input_normal("Enter filename or path for private key: ").strip()
-            with open(pub_file, "w") as f:
-                f.write(public_key)
-            with open(priv_file, "w") as f:
-                f.write(private_key)
-            print_success(f"Public key saved to {pub_file}")
-            print_success(f"Private key saved to {priv_file}")
-        else:
-            print_error("Invalid choice, keys not saved.")
+        root.destroy()
+        return filepath
