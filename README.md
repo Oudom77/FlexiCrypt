@@ -56,6 +56,8 @@ FlexiCrypt/
 ## Requirements
 - Python 3.x  
 - Required Python libraries:
+  - `os`
+  - `sys`
   - `rsa`
   - `colorama`
   - `pyfiglet`
