@@ -1,5 +1,42 @@
 # FlexiCrypt
 
+# RSA Encryption Module
+
+## Overview
+The RSA module is part of the **FlexiCrypt** project.  
+It provides **public-key encryption and decryption** for securing text and files using the RSA cryptographic algorithm.
+
+This module allows users to:
+- Generate RSA key pairs
+- Encrypt text or files using a public key
+- Decrypt encrypted data using a private key
+
+---
+
+## Features
+- RSA key pair generation (configurable key size)
+- Public key encryption
+- Private key decryption
+- Supports text and file-based encryption
+- Save and load RSA keys from files
+- Menu-driven command-line interface
+
+---
+
+## Requirements
+- Python 3.x
+- Required files:
+  - `FlexiCrypt.py`
+  - `color.py`
+  - `RSA.py`
+- Required Python libraries:
+  - `rsa`
+
+Install the RSA library if needed:
+```bash
+pip install rsa
+```
+
 # Zero-Width Space (ZWS) Steganography Module
 
 ## Overview
