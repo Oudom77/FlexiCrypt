@@ -1,3 +1,5 @@
+from color import *
+
 def write_file(message = None, binary = False, output_file = None):
         try:
             if not output_file:
@@ -12,7 +14,7 @@ def write_file(message = None, binary = False, output_file = None):
                 else:
                     f.write(message)
         finally:
-            print("Write to file completed.")
+            print_info("Write to file completed.")
 
 def read_file(binary=False, input_file=None):
     try:
@@ -29,5 +31,5 @@ def read_file(binary=False, input_file=None):
         with open(input_file, mode) as f:
             return f.read()
     finally:
-        print("Read file completed.")
+        print_info("Read file completed.")
         
