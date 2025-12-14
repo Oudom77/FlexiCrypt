@@ -1,69 +1,73 @@
 # FlexiCrypt
 
-# RSA Encryption Module
-
 ## Overview
-The RSA module is part of the **FlexiCrypt** project.  
-It provides **public-key encryption and decryption** for securing text and files using the RSA cryptographic algorithm.
+**FlexiCrypt** is a Python-based command-line security tool that provides two different methods for protecting text-based data:
 
-This module allows users to:
-- Generate RSA key pairs
-- Encrypt text or files using a public key
-- Decrypt encrypted data using a private key
+- **RSA Cryptography** – strong encryption for confidentiality  
+- **Zero-Width Space (ZWS) Steganography** – hidden communication inside normal text  
+
+The system allows users to choose the appropriate security technique based on different security requirements, demonstrating both encryption and information hiding concepts.
 
 ---
 
 ## Features
-- RSA key pair generation (configurable key size)
-- Public key encryption
-- Private key decryption
-- Supports text and file-based encryption
-- Save and load RSA keys from files
-- Menu-driven command-line interface
+- Modular security system design  
+- RSA public-key encryption and decryption  
+- Zero-Width Space (ZWS) text steganography  
+- Menu-driven command-line interface  
+- File-based input and output  
+- Automatic bit-length detection for ZWS decoding  
+- Extensible architecture for future security methods  
+
+---
+
+## Project Structure
+
+FlexiCrypt/
+│
+├── CODE/
+│   └── FlexiCryptSystem/
+│       ├── main.py              # Program entry point
+│       ├── FlexiCrypt.py        # Core system controller
+│       ├── RSA.py               # RSA key generation, encryption & decryption
+│       ├── ZWS.py               # Zero Width Space encoding/decoding
+│       ├── FileHandling.py      # Read/write file utilities
+│       └── color.py             # Terminal color formatting
+│
+├── FILE/
+│   ├── plaintext.txt            # Original message
+│   ├── encrypt.txt              # Encrypted output
+│   ├── decrypt.txt              # Decrypted output
+│   ├── encode.txt               # ZWS encoded text
+│   ├── decode.txt               # ZWS decoded text
+│   ├── secret.txt               # Hidden message for ZWS
+│   └── cover.txt                # Cover text for steganography
+│
+├── KEY/
+│   ├── publickey.txt            # RSA public key
+│   ├── privatekey.txt           # RSA private key
+│   └── key.txt                  # Key storage reference
+│
+└── README.md
 
 ---
 
 ## Requirements
-- Python 3.x
-- Required files:
-  - `FlexiCrypt.py`
-  - `color.py`
-  - `RSA.py`
+- Python 3.x  
 - Required Python libraries:
   - `rsa`
+  - `colorama`
+  - `pyfiglet`
+  - `tkinter` (usually included with Python)
 
-Install the RSA library if needed:
+Install required libraries if needed:
 ```bash
-pip install rsa
+pip install rsa colorama pyfiglet
 ```
-
-# Zero-Width Space (ZWS) Steganography Module
-
-## Overview
-The Zero-Width Space (ZWS) module is part of the **FlexiCrypt** project.  
-It allows users to hide secret messages inside normal text files using invisible Unicode characters without changing the visible content of the text.
-
-The module supports both **manual encoding/decoding** and **automatic bit-length detection**.
-
-
-## Features
-- Hide secret messages inside text files using zero-width Unicode characters
-- Supports **7-bit** and **8-bit** encoding
-- Automatic bit-length detection during decoding
-- File-based input and output
-- Simple command-line interface with file selection GUI
-
-
-## Requirements
-- Python 3.x
-- Required files:
-  - `FlexiCrypt.py`
-  - `color.py`
-  - `ZWS.py`
-
-
 ## How to Run
 From the project directory, run:
 
 ```bash
-python ZWS.py
+python main.py
+```
+
