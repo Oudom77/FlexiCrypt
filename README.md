@@ -23,6 +23,7 @@ The system allows users to choose the appropriate security technique based on di
 
 ## Project Structure
 
+```
 FlexiCrypt/
 │
 ├── CODE/
@@ -49,7 +50,7 @@ FlexiCrypt/
 │   └── key.txt                  # Key storage reference
 │
 └── README.md
-
+```
 ---
 
 ## Requirements
