@@ -28,13 +28,25 @@ class FlexiCryptSystem:
             root = Tk()
             root.withdraw()
             root.lift()
-            root.attributes("-topmost", True)   # <-- Forces dialog to front
-
-            filepath = filedialog.askopenfilename(
-                parent=root,
-                title=title,
-                filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")]
-            )
+            root.attributes("-topmost", True)
+            if title == "Select .bin file":
+                filepath = filedialog.askopenfilename(
+                    parent = root,
+                    title = title,
+                    filetypes = [("Binary Files", "*.bin"), ("All Files", "*.*")]
+                )
+            elif "Key" in title:
+                 filepath = filedialog.askopenfilename(
+                    parent = root,
+                    title = title,
+                    filetypes = [("All Files", "*.*")]
+                )
+            else:
+                filepath = filedialog.askopenfilename(
+                    parent=root,
+                    title=title,
+                    filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")]
+                )
 
             root.destroy()
             return filepath
@@ -43,7 +55,7 @@ class FlexiCryptSystem:
         root = Tk()
         root.withdraw()
         root.lift()
-        root.attributes("-topmost", True)   # <-- Forces dialog to front
+        root.attributes("-topmost", True)
 
         filepath = filedialog.asksaveasfilename(
             parent=root,
