@@ -280,7 +280,7 @@ def rsa_main():
                                     rsa_obj.input_file = in_file
                                     data = rsa_obj.read_file()
                                     #Encrypt the plaintext that read from input file
-                                    cipher = rsa_obj.process(pub_key, data)
+                                    cipher = rsa_obj.process(data)
                                     #Print to let user know that encrypt from file is success
                                     print_success("Encrypted from file success.")
                             #If user choose exit print exit message then break
